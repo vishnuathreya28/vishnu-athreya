@@ -2,12 +2,7 @@ export const personas = ['All', 'Finance', 'Data Engineering', 'SWE']
 
 export const bio = {
   name: 'Vishnu Athreya',
-  taglines: {
-    All: 'Software Engineer · Data · Finance',
-    Finance: 'Building systems at the intersection of data and financial markets',
-    'Data Engineering': 'Designing pipelines that turn raw data into reliable infrastructure',
-    SWE: 'Backend engineer focused on scale, reliability, and clean systems',
-  }
+  tagline: 'Systems at scale. Research that ships. Code that matters.',
 }
 
 export const projects = [
