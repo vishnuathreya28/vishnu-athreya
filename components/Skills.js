@@ -33,8 +33,8 @@ export default function Skills() {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.4 }}
-        className="text-xs font-semibold uppercase tracking-widest mb-12"
-        style={{ color: '#94a3b8' }}
+        className="text-2xl font-bold mb-10"
+        style={{ color: '#1a1a1a' }}
       >
         Skills
       </motion.h2>
