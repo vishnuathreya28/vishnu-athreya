@@ -8,6 +8,7 @@ import Achievements from '@/components/Achievements'
 import Projects from '@/components/Projects'
 import Publications from '@/components/Publications'
 import Resume from '@/components/Resume'
+import Skills from '@/components/Skills'
 
 export default function Home() {
   return (
@@ -36,7 +37,7 @@ export default function Home() {
             VA
           </span>
           <div className="flex gap-8">
-            {['About', 'Experience', 'Education', 'Achievements', 'Projects', 'Publications', 'Resume'].map((item) => (
+            {['About', 'Experience', 'Education', 'Achievements', 'Skills', 'Projects', 'Publications', 'Resume'].map((item) => (
               
               <a
                 key={item}
@@ -61,6 +62,7 @@ export default function Home() {
         <section id="education"><Education /></section>
         <section id="achievements"><Achievements /></section>
         <section id="projects"><Projects /></section>
+        <section id="skills"><Skills /></section>
         <section id="publications"><Publications /></section>
         <section id="resume"><Resume /></section>
       </div>
