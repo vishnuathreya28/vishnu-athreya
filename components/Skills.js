@@ -1,27 +1,74 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import { skills } from '@/data/content'
+import { motion, useInView } from 'framer-motion'
+import { useRef } from 'react'
 
-export default function Skills({ persona }) {
-  const filtered = skills.filter(s => s.personas.includes(persona))
+const skills = [
+  {
+    category: 'Languages',
+    items: ['Python', 'Java', 'JavaScript', 'SQL', 'HTML/CSS'],
+  },
+  {
+    category: 'Backend & Systems',
+    items: ['REST APIs', 'Node.js', 'Express', 'Distributed Systems', 'System Design', 'CI/CD'],
+  },
+  {
+    category: 'Data & Finance',
+    items: ['PostgreSQL', 'MongoDB', 'Time-Series Analysis', 'Market Data Pipelines', 'pandas', 'Machine Learning'],
+  },
+  {
+    category: 'Tools & Platforms',
+    items: ['Git', 'GitHub', 'Docker', 'Figma', 'JIRA', 'Postman'],
+  },
+]
+
+export default function Skills() {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true, margin: '-80px' })
 
   return (
-    <section className="w-full max-w-4xl py-16 px-6">
-      <h2 className="text-2xl font-bold mb-8 text-gray-200">
+    <section className="w-full py-12">
+      <motion.h2
+        ref={ref}
+        initial={{ opacity: 0, y: 20 }}
+        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        transition={{ duration: 0.4 }}
+        className="text-2xl font-bold mb-10"
+        style={{ color: '#1a1a1a' }}
+      >
         Skills
-      </h2>
-      <div className="flex flex-wrap gap-3">
-        {filtered.map((skill, index) => (
-          <motion.span
-            key={skill.name + persona}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.2, delay: index * 0.05 }}
-            className="px-4 py-2 rounded-full border border-gray-700 text-sm text-gray-300 hover:border-gray-400 transition-colors duration-200"
+      </motion.h2>
+
+      <div className="flex flex-col gap-8">
+        {skills.map((group, groupIndex) => (
+          <motion.div
+            key={group.category}
+            initial={{ opacity: 0, y: 20 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.4, delay: groupIndex * 0.08 }}
+            className="flex flex-col gap-4 pl-5 py-1"
           >
-            {skill.name}
-          </motion.span>
+            <h3
+              className="text-xs font-semibold uppercase tracking-widest"
+              style={{ color: '#94a3b8' }}
+            >
+              {group.category}
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {group.items.map((skill) => (
+                <span
+                  key={skill}
+                  className="text-sm px-3 py-1 rounded-full transition-colors duration-200"
+                  style={{
+                    border: '1px solid rgba(26,26,26,0.12)',
+                    color: '#666',
+                  }}
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </motion.div>
         ))}
       </div>
     </section>

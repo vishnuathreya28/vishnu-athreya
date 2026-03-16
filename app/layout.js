@@ -9,7 +9,10 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata = {
   title: 'Vishnu Athreya',
-  description: 'Software Engineer · Data · Finance',
+  description: 'Systems at scale. Research that ships. Code that matters.',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({ children }) {
