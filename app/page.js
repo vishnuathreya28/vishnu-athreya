@@ -56,7 +56,7 @@ export default function Home() {
       </nav>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-4xl px-8 flex flex-col" style={{ gap: '120px', paddingTop: '100px', paddingBottom: '120px' }}>
+      <div className="relative z-10 w-full max-w-4xl px-8 flex flex-col gap-28 pt-24 pb-28">
         <section id="about"><Hero /></section>
         <section id="timeline"><Timeline /></section>
         <section id="experience"><Experience /></section>

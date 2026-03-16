@@ -33,13 +33,13 @@ export default function Skills() {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.4 }}
-        className="text-2xl font-bold mb-10"
-        style={{ color: '#1a1a1a' }}
+        className="text-2xl font-bold"
+        style={{ color: '#1a1a1a', marginBottom: '10px' }}
       >
         Skills
       </motion.h2>
 
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-10">
         {skills.map((group, groupIndex) => (
           <motion.div
             key={group.category}

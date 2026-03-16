@@ -1,9 +1,18 @@
 @import "tailwindcss";
+@source "../components";
+@source "../app";
+
+@layer base {
+  :root {
+    --spacing: 0.25rem;
+    --font-sans: ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, monospace;
+    --radius: 0.5rem;
+  }
+}
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {

@@ -62,21 +62,25 @@ function TimelineNode({ event, index }) {
   const isLeft = index % 2 === 0
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
-      animate={isInView ? { opacity: 1, x: 0 } : {}}
-      transition={{ duration: 0.5, delay: 0.1 }}
-      className={`flex w-full items-center gap-8 ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}
-    >
-      {/* Content card */}
+  <motion.div
+    ref={ref}
+    initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
+    animate={isInView ? { opacity: 1, x: 0 } : {}}
+    transition={{ duration: 0.5, delay: 0.1 }}
+    className="grid w-full items-center"
+    style={{ gridTemplateColumns: '1fr 24px 1fr' }}
+  >
+    {/* Left side */}
+    {isLeft ? (
       <div
-        className="flex-1 rounded-2xl p-6 flex flex-col gap-3"
+        className="flex flex-col gap-3 pr-8 py-1"
+        style={{ borderRight: 'none' }}
       >
         <div className="flex items-center gap-3">
           <span
-            className="text-xs font-bold px-2.5 py-1 rounded-full"
+            className="text-xs font-bold px-2 py-1 rounded-full"
             style={{
+              backgroundColor: `${typeColors[event.type]}18`,
               color: typeColors[event.type],
             }}
           >
@@ -86,30 +90,51 @@ function TimelineNode({ event, index }) {
             {event.title}
           </h3>
         </div>
-        <p
-          className="text-sm"
-          style={{ color: '#888', lineHeight: '1.75' }}
-        >
+        <p className="text-sm" style={{ color: '#888', lineHeight: '1.75' }}>
           {event.description}
         </p>
       </div>
+    ) : (
+      <div />
+    )}
 
-      {/* Center dot + line */}
-      <div className="flex flex-col items-center flex-shrink-0 gap-0">
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={isInView ? { scale: 1 } : {}}
-          transition={{ duration: 0.3, delay: 0.2 }}
-          className="w-3 h-3 rounded-full z-10"
-          style={{ backgroundColor: typeColors[event.type] }}
-        />
+    {/* Center dot */}
+    <div className="flex justify-center items-center">
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={isInView ? { scale: 1 } : {}}
+        transition={{ duration: 0.3, delay: 0.2 }}
+        className="w-3 h-3 rounded-full z-10"
+        style={{ backgroundColor: typeColors[event.type] }}
+      />
+    </div>
+
+    {/* Right side */}
+    {!isLeft ? (
+      <div className="flex flex-col gap-3 pl-8 py-1">
+        <div className="flex items-center gap-3">
+          <span
+            className="text-xs font-bold px-2 py-1 rounded-full"
+            style={{
+              backgroundColor: `${typeColors[event.type]}18`,
+              color: typeColors[event.type],
+            }}
+          >
+            {event.year}
+          </span>
+          <h3 className="text-sm font-bold" style={{ color: '#1a1a1a' }}>
+            {event.title}
+          </h3>
+        </div>
+        <p className="text-sm" style={{ color: '#888', lineHeight: '1.75' }}>
+          {event.description}
+        </p>
       </div>
-
-      {/* Empty opposite side */}
-      <div className="flex-1" />
-    </motion.div>
-  )
-}
+    ) : (
+      <div />
+    )}
+  </motion.div>
+)}
 
 export default function Timeline() {
   const ref = useRef(null)

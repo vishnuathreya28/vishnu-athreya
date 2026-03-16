@@ -52,13 +52,16 @@ function ProjectCard({ project, index }) {
           {project.tags.map((tag) => (
             <span
               key={tag}
-              className="flex flex-col gap-4 p-6 rounded-2xl"
+              className="text-xs px-3 py-1 rounded-full"
+              style={{
+                backgroundColor: 'rgba(148,163,184,0.1)',
+                color: '#94a3b8',
+              }}
             >
               {tag}
             </span>
           ))}
         </div>
-
         <a
           href={project.github}
           target="_blank"
