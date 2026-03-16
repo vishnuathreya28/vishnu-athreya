@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { bio } from '@/data/content'
+import TypingQuote from './Tagline';
 
 export default function Hero() {
   return (
@@ -21,7 +22,7 @@ export default function Hero() {
             >
               Software Engineer · Bengaluru, India
             </motion.p>
-
+            
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -32,17 +33,7 @@ export default function Hero() {
               Vishnu<br />Athreya
             </motion.h1>
           </div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.2 }}
-            className="text-base max-w-sm"
-            style={{ color: '#666', lineHeight: '1.8' }}
-          >
-            {bio.tagline}
-          </motion.p>
-
+          <TypingQuote />
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}

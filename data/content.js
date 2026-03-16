@@ -1,8 +1,7 @@
 export const personas = ['All', 'Finance', 'Data Engineering', 'SWE']
 
 export const bio = {
-  name: 'Vishnu Athreya',
-  tagline: 'Systems at scale. Research that ships. Code that matters.',
+  name: 'Vishnu Athreya'
 }
 
 export const projects = [
