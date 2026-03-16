@@ -57,13 +57,13 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="w-56 h-72 rounded-2xl flex-shrink-0 overflow-hidden"
-          style={{ border: '1px solid rgba(26,26,26,0.06)' }}
+          className="w-64 h-80 rounded-3xl flex-shrink-0 overflow-hidden"
         >
           <img
             src="/photo.jpeg"
             alt="Vishnu Athreya"
             className="w-full h-full object-cover"
+            style={{ objectPosition: 'center 20%' }}
           />
         </motion.div>
 
