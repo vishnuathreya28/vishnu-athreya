@@ -63,21 +63,22 @@ function ExperienceCard({ exp, index, defaultOpen }) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       onClick={() => setIsOpen(!isOpen)}
       className="flex flex-col gap-4 pl-6 py-4 cursor-pointer"
+      style={{ borderLeft: '2px solid var(--color-accent)' }}
     >
       {/* Header — always visible */}
       <div className="flex items-start justify-between">
         <div className="flex flex-col gap-1">
-          <h3 className="text-lg font-bold" style={{ color: '#1a1a1a' }}>
+          <h3 className="text-lg font-bold" style={{ color: 'var(--color-text-primary)' }}>
             {exp.role}
           </h3>
-          <span className="text-sm font-semibold" style={{ color: '#94a3b8' }}>
+          <span className="text-sm font-semibold" style={{ color: 'var(--color-accent)' }}>
             {exp.company}
           </span>
         </div>
         <div className="flex flex-col items-end gap-1">
-          <span className="text-xs" style={{ color: '#aaa' }}>{exp.period}</span>
-          <span className="text-xs" style={{ color: '#aaa' }}>{exp.location}</span>
-          <span className="text-sm mt-1" style={{ color: '#94a3b8' }}>
+          <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>{exp.period}</span>
+          <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>{exp.location}</span>
+          <span className="text-sm mt-1" style={{ color: 'var(--color-accent)' }}>
             {isOpen ? '−' : '+'}
           </span>
         </div>
@@ -91,7 +92,7 @@ function ExperienceCard({ exp, index, defaultOpen }) {
             className="text-xs px-3 py-1 rounded-full"
             style={{
               backgroundColor: 'rgba(148,163,184,0.1)',
-              color: '#94a3b8',
+              color: 'var(--color-accent)',
             }}
           >
             {tech}
@@ -110,13 +111,13 @@ function ExperienceCard({ exp, index, defaultOpen }) {
             transition={{ duration: 0.3, ease: 'easeInOut' }}
             className="flex flex-col gap-4 overflow-hidden"
           >
-            <p className="text-sm leading-relaxed" style={{ color: '#666' }}>
+            <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
               {exp.description}
             </p>
             <ul className="flex flex-col gap-2">
               {exp.highlights.map((point) => (
-                <li key={point} className="flex items-start gap-2 text-sm" style={{ color: '#666' }}>
-                  <span style={{ color: '#94a3b8', marginTop: '2px' }}>→</span>
+                <li key={point} className="flex items-start gap-2 text-sm" style={{ color: 'var(--color-text-secondary)' }}>
+                  <span style={{ color: 'var(--color-accent)', marginTop: '2px' }}>→</span>
                   {point}
                 </li>
               ))}
@@ -140,7 +141,7 @@ export default function Experience() {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.4 }}
         className="text-2xl font-bold mb-10"
-        style={{ color: '#1a1a1a' }}
+        style={{ color: 'var(--color-text-primary)' }}
       >
         Experience
       </motion.h2>

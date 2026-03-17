@@ -32,7 +32,7 @@ const projects = [
     id: 5,
     title: 'Adaptive UI for Geriatric Users',
     description: 'IEEE published research on adaptive interfaces that reduce cognitive load in high-stakes workflows using psychometric analysis and rule-based personalisation.',
-    tags: ['Research', 'HCI', 'JavaScript', 'UX']
+    tags: ['Research', 'HCI', 'JavaScript', 'UX'],
   },
 ]
 
@@ -47,13 +47,13 @@ function ProjectCard({ project, index }) {
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="flex flex-col gap-4 p-6 rounded-2xl"
-      style={{ border: '1px solid rgba(26,26,26,0.08)' }}
+      style={{ border: '1px solid var(--color-border)' }}
     >
-      <h3 className="text-base font-bold" style={{ color: '#1a1a1a' }}>
+      <h3 className="text-base font-bold" style={{ color: 'var(--color-text-primary)' }}>
         {project.title}
       </h3>
 
-      <p className="text-sm leading-relaxed" style={{ color: '#666' }}>
+      <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
         {project.description}
       </p>
 
@@ -65,26 +65,13 @@ function ProjectCard({ project, index }) {
               className="text-xs px-3 py-1 rounded-full"
               style={{
                 backgroundColor: 'rgba(148,163,184,0.1)',
-                color: '#94a3b8',
+                color: 'var(--color-accent)',
               }}
             >
               {tag}
             </span>
           ))}
         </div>
-        {project.publication && (
-          <a
-            href={project.publication}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm font-medium flex-shrink-0 ml-4 transition-colors duration-200"
-            style={{ color: '#94a3b8' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#1a1a1a'}
-            onMouseLeave={e => e.currentTarget.style.color = '#94a3b8'}
-          >
-            IEEE →
-          </a>
-        )}
       </div>
     </motion.div>
   )
@@ -102,7 +89,7 @@ export default function Projects() {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.4 }}
         className="text-2xl font-bold mb-10"
-        style={{ color: '#1a1a1a' }}
+        style={{ color: 'var(--color-text-primary)' }}
       >
         Projects
       </motion.h2>

@@ -26,7 +26,7 @@ export default function Publications() {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.4 }}
         className="text-2xl font-bold mb-10"
-        style={{ color: '#1a1a1a' }}
+        style={{ color: 'var(--color-text-primary)' }}
       >
         Publications
       </motion.h2>
@@ -39,29 +39,34 @@ export default function Publications() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: index * 0.1 }}
             className="flex flex-col gap-4 p-6 rounded-2xl"
+            style={{ border: '1px solid var(--color-border)' }}
           >
             {/* Header */}
             <div className="flex items-start justify-between gap-6">
               <h3
                 className="text-base font-bold leading-snug"
-                style={{ color: '#1a1a1a' }}
+                style={{ color: 'var(--color-text-primary)' }}
               >
                 {pub.title}
               </h3>
               <div className="flex flex-col items-end gap-1 flex-shrink-0">
                 <span
                   className="text-xs font-bold px-2 py-1 rounded-full"
+                  style={{
+                    backgroundColor: 'rgba(148,163,184,0.1)',
+                    color: 'var(--color-accent)',
+                  }}
                 >
                   {pub.journal}
                 </span>
-                <span className="text-xs" style={{ color: '#aaa' }}>
+                <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>
                   {pub.year}
                 </span>
               </div>
             </div>
 
             {/* Description */}
-            <p className="text-sm leading-relaxed" style={{ color: '#666' }}>
+            <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
               {pub.description}
             </p>
 
@@ -71,7 +76,11 @@ export default function Publications() {
                 {pub.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="flex flex-col gap-4 p-6 rounded-2xl"
+                    className="text-xs px-3 py-1 rounded-full"
+                    style={{
+                      backgroundColor: 'rgba(148,163,184,0.1)',
+                      color: 'var(--color-accent)',
+                    }}
                   >
                     {tag}
                   </span>
@@ -81,10 +90,10 @@ export default function Publications() {
                 href={pub.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium transition-colors duration-200"
-                style={{ color: '#94a3b8' }}
-                onMouseEnter={e => e.target.style.color = '#1a1a1a'}
-                onMouseLeave={e => e.target.style.color = '#94a3b8'}
+                className="text-sm font-medium transition-colors duration-200 flex-shrink-0 ml-4"
+                style={{ color: 'var(--color-accent)' }}
+                onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text-primary)'}
+                onMouseLeave={e => e.currentTarget.style.color = 'var(--color-accent)'}
               >
                 View paper →
               </a>

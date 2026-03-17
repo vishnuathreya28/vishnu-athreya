@@ -49,17 +49,17 @@ function EducationCard({ edu, index }) {
         <div className="flex flex-col gap-1">
           <h3
             className="text-lg font-bold"
-            style={{ color: edu.placeholder ? '#aaa' : '#1a1a1a' }}
+            style={{ color: edu.placeholder ? '#bbb' : 'var(--color-text-primary)' }}
           >
             {edu.degree}
           </h3>
-          <span className="text-sm font-semibold" style={{ color: '#94a3b8' }}>
+          <span className="text-sm font-semibold" style={{ color: edu.placeholder ? '#bbb' : 'var(--color-text-primary)' }}>
             {edu.institution}
           </span>
         </div>
         <div className="flex flex-col items-end gap-1">
-          <span className="text-xs" style={{ color: '#aaa' }}>{edu.period}</span>
-          <span className="text-xs" style={{ color: '#aaa' }}>{edu.location}</span>
+          <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>{edu.period}</span>
+          <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>{edu.location}</span>
         </div>
       </div>
 
@@ -69,9 +69,9 @@ function EducationCard({ edu, index }) {
           <li
             key={point}
             className="flex items-start gap-2 text-sm"
-            style={{ color: edu.placeholder ? '#bbb' : '#666' }}
+            style={{ color: edu.placeholder ? '#bbb' : 'var(--color-text-secondary)' }}
           >
-            <span style={{ color: '#94a3b8', marginTop: '2px' }}>→</span>
+            <span style={{ color: 'var(--color-accent)', marginTop: '2px' }}>→</span>
             {point}
           </li>
         ))}
@@ -92,7 +92,7 @@ export default function Education() {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.4 }}
         className="text-2xl font-bold mb-10"
-        style={{ color: '#1a1a1a' }}
+        style={{ color: 'var(--color-text-primary)' }}
       >
         Education
       </motion.h2>

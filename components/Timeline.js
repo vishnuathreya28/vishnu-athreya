@@ -42,7 +42,7 @@ const events = [
   },
   {
     year: '2025',
-    title: 'What\'s Next',
+    title: "What's Next",
     description: 'Graduate school. Bigger systems. More impact.',
     type: 'future',
   },
@@ -62,79 +62,77 @@ function TimelineNode({ event, index }) {
   const isLeft = index % 2 === 0
 
   return (
-  <motion.div
-    ref={ref}
-    initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
-    animate={isInView ? { opacity: 1, x: 0 } : {}}
-    transition={{ duration: 0.5, delay: 0.1 }}
-    className="grid w-full items-center"
-    style={{ gridTemplateColumns: '1fr 24px 1fr' }}
-  >
-    {/* Left side */}
-    {isLeft ? (
-      <div
-        className="flex flex-col gap-3 pr-8 py-1"
-        style={{ borderRight: 'none' }}
-      >
-        <div className="flex items-center gap-3">
-          <span
-            className="text-xs font-bold px-2 py-1 rounded-full"
-            style={{
-              backgroundColor: `${typeColors[event.type]}18`,
-              color: typeColors[event.type],
-            }}
-          >
-            {event.year}
-          </span>
-          <h3 className="text-sm font-bold" style={{ color: '#1a1a1a' }}>
-            {event.title}
-          </h3>
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, x: isLeft ? -30 : 30 }}
+      animate={isInView ? { opacity: 1, x: 0 } : {}}
+      transition={{ duration: 0.5, delay: 0.1 }}
+      className="grid w-full items-center"
+      style={{ gridTemplateColumns: '1fr 24px 1fr' }}
+    >
+      {/* Left side */}
+      {isLeft ? (
+        <div className="flex flex-col gap-3 pr-8 py-1">
+          <div className="flex items-center gap-3">
+            <span
+              className="text-xs font-bold px-2 py-1 rounded-full"
+              style={{
+                backgroundColor: `${typeColors[event.type]}18`,
+                color: typeColors[event.type],
+              }}
+            >
+              {event.year}
+            </span>
+            <h3 className="text-sm font-bold" style={{ color: 'var(--color-text-primary)' }}>
+              {event.title}
+            </h3>
+          </div>
+          <p className="text-sm" style={{ color: 'var(--color-text-secondary)', lineHeight: '1.75' }}>
+            {event.description}
+          </p>
         </div>
-        <p className="text-sm" style={{ color: '#888', lineHeight: '1.75' }}>
-          {event.description}
-        </p>
+      ) : (
+        <div />
+      )}
+
+      {/* Center dot */}
+      <div className="flex justify-center items-center">
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={isInView ? { scale: 1 } : {}}
+          transition={{ duration: 0.3, delay: 0.2 }}
+          className="w-3 h-3 rounded-full z-10"
+          style={{ backgroundColor: typeColors[event.type] }}
+        />
       </div>
-    ) : (
-      <div />
-    )}
 
-    {/* Center dot */}
-    <div className="flex justify-center items-center">
-      <motion.div
-        initial={{ scale: 0 }}
-        animate={isInView ? { scale: 1 } : {}}
-        transition={{ duration: 0.3, delay: 0.2 }}
-        className="w-3 h-3 rounded-full z-10"
-        style={{ backgroundColor: typeColors[event.type] }}
-      />
-    </div>
-
-    {/* Right side */}
-    {!isLeft ? (
-      <div className="flex flex-col gap-3 pl-8 py-1">
-        <div className="flex items-center gap-3">
-          <span
-            className="text-xs font-bold px-2 py-1 rounded-full"
-            style={{
-              backgroundColor: `${typeColors[event.type]}18`,
-              color: typeColors[event.type],
-            }}
-          >
-            {event.year}
-          </span>
-          <h3 className="text-sm font-bold" style={{ color: '#1a1a1a' }}>
-            {event.title}
-          </h3>
+      {/* Right side */}
+      {!isLeft ? (
+        <div className="flex flex-col gap-3 pl-8 py-1">
+          <div className="flex items-center gap-3">
+            <span
+              className="text-xs font-bold px-2 py-1 rounded-full"
+              style={{
+                backgroundColor: `${typeColors[event.type]}18`,
+                color: typeColors[event.type],
+              }}
+            >
+              {event.year}
+            </span>
+            <h3 className="text-sm font-bold" style={{ color: 'var(--color-text-primary)' }}>
+              {event.title}
+            </h3>
+          </div>
+          <p className="text-sm" style={{ color: 'var(--color-text-secondary)', lineHeight: '1.75' }}>
+            {event.description}
+          </p>
         </div>
-        <p className="text-sm" style={{ color: '#888', lineHeight: '1.75' }}>
-          {event.description}
-        </p>
-      </div>
-    ) : (
-      <div />
-    )}
-  </motion.div>
-)}
+      ) : (
+        <div />
+      )}
+    </motion.div>
+  )
+}
 
 export default function Timeline() {
   const ref = useRef(null)
@@ -148,17 +146,16 @@ export default function Timeline() {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.4 }}
         className="text-xs font-semibold uppercase tracking-widest mb-12"
-        style={{ color: '#94a3b8' }}
+        style={{ color: 'var(--color-accent)' }}
       >
         The Path Here
       </motion.h2>
 
       <div className="relative flex flex-col gap-4">
-
         {/* Vertical line */}
         <div
           className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-px"
-          style={{ backgroundColor: 'rgba(26,26,26,0.08)' }}
+          style={{ backgroundColor: 'var(--color-border)' }}
         />
 
         {events.map((event, index) => (

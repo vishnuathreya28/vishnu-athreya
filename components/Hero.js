@@ -1,13 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { bio } from '@/data/content'
-import TypingQuote from './Tagline';
+import TypingQuote from './Tagline'
 
 export default function Hero() {
   return (
     <section className="w-full flex flex-col gap-16">
-
       <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-16">
 
         {/* Left */}
@@ -18,7 +16,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
               className="text-xs font-semibold uppercase tracking-widest"
-              style={{ color: '#94a3b8' }}
+              style={{ color: 'var(--color-accent)' }}
             >
               Software Engineer · Bengaluru, India
             </motion.p>
@@ -28,7 +26,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
               className="text-5xl md:text-6xl font-extrabold tracking-tight leading-none"
-              style={{ color: '#1a1a1a' }}
+              style={{ color: 'var(--color-text-primary)' }}
             >
               Vishnu<br />Athreya
             </motion.h1>
@@ -39,7 +37,7 @@ export default function Hero() {
             animate={{ scaleX: 1 }}
             transition={{ duration: 0.5, delay: 0.3 }}
             className="h-px w-16 origin-left"
-            style={{ backgroundColor: '#94a3b8' }}
+            style={{ backgroundColor: 'var(--color-accent)' }}
           />
         </div>
 

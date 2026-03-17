@@ -14,8 +14,8 @@ export default function Resume() {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.4 }}
-        className="text-2xl font-semibold uppercase tracking-widest mb-12"
-        style={{ color: '#94a3b8' }}
+        className="text-2xl font-bold mb-10"
+        style={{ color: 'var(--color-text-primary)' }}
       >
         Resume
       </motion.h2>
@@ -25,12 +25,13 @@ export default function Resume() {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: 0.1 }}
         className="flex items-center justify-between pl-6 py-5"
+        style={{ borderLeft: '2px solid var(--color-accent)' }}
       >
         <div className="flex flex-col gap-1">
-          <h3 className="text-base font-bold" style={{ color: '#1a1a1a' }}>
+          <h3 className="text-base font-bold" style={{ color: 'var(--color-text-primary)' }}>
             Vishnu Athreya
           </h3>
-          <p className="text-xs uppercase tracking-widest" style={{ color: '#aaa' }}>
+          <p className="text-xs uppercase tracking-widest" style={{ color: 'var(--color-text-muted)' }}>
             Last updated — 2025
           </p>
         </div>
@@ -41,20 +42,19 @@ export default function Resume() {
             target="_blank"
             rel="noopener noreferrer"
             className="px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200"
-            style={{ color: '#94a3b8' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#1a1a1a'}
-            onMouseLeave={e => e.currentTarget.style.color = '#94a3b8'}
+            style={{ color: 'var(--color-accent)' }}
+            onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text-primary)'}
+            onMouseLeave={e => e.currentTarget.style.color = 'var(--color-accent)'}
           >
             View PDF →
           </a>
-
           <a
             href="/resume.pdf"
             download
             className="px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200"
-            style={{ color: '#94a3b8' }}
-            onMouseEnter={e => e.currentTarget.style.color = '#1a1a1a'}
-            onMouseLeave={e => e.currentTarget.style.color = '#94a3b8'}
+            style={{ color: 'var(--color-accent)' }}
+            onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text-primary)'}
+            onMouseLeave={e => e.currentTarget.style.color = 'var(--color-accent)'}
           >
             Download
           </a>

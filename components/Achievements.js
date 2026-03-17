@@ -72,11 +72,11 @@ function AchievementItem({ item, index }) {
       className="flex flex-col gap-2 p-5 rounded-xl"
     >
       <div className="flex items-start justify-between gap-4">
-        <h4 className="text-sm font-bold" style={{ color: '#1a1a1a' }}>
+        <h4 className="text-sm font-bold" style={{ color: 'var(--color-text-primary)' }}>
           {item.title}
         </h4>
         <div className="flex items-center gap-2 flex-shrink-0">
-          <span className="text-xs" style={{ color: '#aaa' }}>{item.year}</span>
+          <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>{item.year}</span>
           <span
             className="text-xs px-2 py-0.5 rounded-full font-medium"
             style={{
@@ -88,7 +88,7 @@ function AchievementItem({ item, index }) {
           </span>
         </div>
       </div>
-      <p className="text-sm leading-relaxed" style={{ color: '#666' }}>
+      <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
         {item.description}
       </p>
     </motion.div>
@@ -107,7 +107,7 @@ export default function Achievements() {
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.4 }}
         className="text-2xl font-bold mb-10"
-        style={{ color: '#1a1a1a' }}
+        style={{ color: 'var(--color-text-primary)' }}
       >
         Achievements
       </motion.h2>
@@ -117,7 +117,7 @@ export default function Achievements() {
           <div key={group.category} className="flex flex-col gap-4">
             <h3
               className="text-xs font-semibold uppercase tracking-widest"
-              style={{ color: '#94a3b8' }}
+              style={{ color: 'var(--color-accent)' }}
             >
               {group.category}
             </h3>

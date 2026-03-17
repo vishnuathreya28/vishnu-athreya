@@ -8,6 +8,27 @@
     --font-sans: ui-sans-serif, system-ui, sans-serif;
     --font-mono: ui-monospace, monospace;
     --radius: 0.5rem;
+
+    /* Colors */
+    --color-bg: #f0efe9;
+    --color-text-primary: #1a1a1a;
+    --color-text-secondary: #666;
+    --color-text-tertiary: #999;
+    --color-text-muted: #aaa;
+    --color-accent: #94a3b8;
+    --color-border: rgba(26,26,26,0.08);
+    --color-border-strong: rgba(26,26,26,0.12);
+
+    /* Type scale */
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-4xl: 2.25rem;
+    --text-5xl: 3rem;
+    --text-6xl: 3.75rem;
   }
 }
 
@@ -20,8 +41,8 @@ html {
 }
 
 body {
-  background-color: #f0efe9;
-  color: #1a1a1a;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
   font-family: var(--font-jakarta), sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;

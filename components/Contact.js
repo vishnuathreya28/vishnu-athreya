@@ -54,8 +54,8 @@ export default function Contact() {
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.4 }}
-        className="text-4xl font-extrabold tracking-tight mb-12"
-        style={{ color: '#1a1a1a' }}
+        className="text-2xl font-bold mb-10"
+        style={{ color: 'var(--color-text-primary)' }}
       >
         Get In Touch
       </motion.h2>
@@ -69,23 +69,23 @@ export default function Contact() {
             <MotionEl
               key={contact.label}
               {...(isEmail
-                ? { onClick: handleCopy, style: { cursor: 'pointer', borderBottom: '1px solid rgba(26,26,26,0.06)', color: '#666' } }
-                : { href: contact.href, target: '_blank', rel: 'noopener noreferrer', style: { borderBottom: '1px solid rgba(26,26,26,0.06)', color: '#666' } }
+                ? { onClick: handleCopy, style: { cursor: 'pointer', borderBottom: '1px solid var(--color-border)', color: 'var(--color-text-secondary)' } }
+                : { href: contact.href, target: '_blank', rel: 'noopener noreferrer', style: { borderBottom: '1px solid var(--color-border)', color: 'var(--color-text-secondary)' } }
               )}
               initial={{ opacity: 0, x: -20 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.4, delay: index * 0.08 }}
               className="flex items-center justify-between py-5 transition-all duration-200 group"
-              onMouseEnter={e => e.currentTarget.style.color = '#1a1a1a'}
-              onMouseLeave={e => e.currentTarget.style.color = '#666'}
+              onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text-primary)'}
+              onMouseLeave={e => e.currentTarget.style.color = 'var(--color-text-secondary)'}
             >
               <div className="flex items-center gap-4">
-                <span style={{ color: '#94a3b8' }}>{contact.icon}</span>
+                <span style={{ color: 'var(--color-accent)' }}>{contact.icon}</span>
                 <span className="text-sm font-semibold uppercase tracking-widest">
                   {contact.label}
                 </span>
               </div>
-              <span className="text-sm transition-all duration-200" style={{ color: '#94a3b8' }}>
+              <span className="text-sm transition-all duration-200" style={{ color: 'var(--color-accent)' }}>
                 {isEmail && copied ? 'Copied!' : '→'}
               </span>
             </MotionEl>
@@ -100,14 +100,14 @@ export default function Contact() {
         style={{
           marginTop: '80px',
           paddingTop: '40px',
-          borderTop: '1px solid rgba(26,26,26,0.08)'
+          borderTop: '1px solid var(--color-border)',
         }}
         className="flex items-center justify-between"
       >
-        <span className="text-xs uppercase tracking-widest" style={{ color: '#bbb' }}>
+        <span className="text-xs uppercase tracking-widest" style={{ color: 'var(--color-text-muted)' }}>
           Vishnu Athreya · 2026
         </span>
-        <span className="text-xs uppercase tracking-widest" style={{ color: '#bbb' }}>
+        <span className="text-xs uppercase tracking-widest" style={{ color: 'var(--color-text-muted)' }}>
           Bengaluru, India
         </span>
       </motion.div>
