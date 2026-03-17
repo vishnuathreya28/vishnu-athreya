@@ -2,30 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-
-const education = [
-  {
-    institution: 'PES University',
-    degree: 'B.Tech, Computer Science & Engineering',
-    period: '2020 — 2024',
-    location: 'Bengaluru, India',
-    highlights: [
-      'IEEE published research — Best Capstone among 200 teams',
-      'Led design-thinking workshops through Samagic',
-      'Mentored underprivileged students at The Coder Factory',
-    ],
-  },
-  {
-    institution: 'Graduate School',
-    degree: 'Masters — Coming Soon',
-    period: '2026 —',
-    location: 'TBD',
-    highlights: [
-      'Details to be updated shortly.',
-    ],
-    placeholder: true,
-  },
-]
+import { education } from '@/data/content'
 
 function EducationCard({ edu, index }) {
   const ref = useRef(null)

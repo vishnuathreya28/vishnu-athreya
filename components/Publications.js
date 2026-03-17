@@ -2,17 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-
-const publications = [
-  {
-    title: 'Adaptive UI/UX for Smart Geriatric Users',
-    journal: 'IEEE',
-    year: '2023',
-    description: 'Proposed and implemented an adaptive UI/UX framework reducing cognitive load for older adults through psychometric profiling, speech-to-text integration, and rule-based interface personalization.',
-    tags: ['HCI', 'Accessibility', 'Adaptive Systems', 'JavaScript'],
-    link: 'https://ieeexplore.ieee.org/document/10585592/',
-  },
-]
+import { publications } from '@/data/content'
 
 export default function Publications() {
   const ref = useRef(null)

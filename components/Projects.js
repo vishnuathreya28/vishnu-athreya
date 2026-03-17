@@ -2,47 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-
-const projects = [
-  {
-    id: 1,
-    title: 'ESS AI Assistant',
-    description: 'LLM-powered chatbot built as a prototype for enterprise HR software. Lets employees interact with the application in plain language — navigate to screens, generate payslips, update details — without touching the UI directly.',
-    tags: ['LLM', 'AI', 'Python', 'Enterprise Software'],
-  },
-  {
-    id: 2,
-    title: 'Market Data Pipeline',
-    description: 'Ingestion and normalisation of time-series market data across NSE, BSE, Zerodha and Upstox. Built to handle latency, missing data, and schema inconsistencies across sources.',
-    tags: ['Python', 'PostgreSQL', 'Time-Series', 'Data Engineering'],
-    status: 'inprogress',
-  },
-  {
-    id: 3,
-    title: 'Auth & Security Platform',
-    description: 'Backend authentication system serving 3M+ active users across 1,000+ enterprise deployments. Focused on reliability, failure rate reduction, and security hardening.',
-    tags: ['Java', 'REST APIs', 'Distributed Systems', 'CI/CD'],
-  },
-  {
-    id: 4,
-    title: 'This Portfolio',
-    description: 'Designed and built from scratch. Next.js app router, Tailwind v4, Framer Motion animations, deployed on Vercel. Every line typed by hand.',
-    tags: ['Next.js', 'Tailwind v4', 'Framer Motion', 'Vercel'],
-  },
-  {
-    id: 5,
-    title: 'Adaptive UI for Geriatric Users',
-    description: 'IEEE published research on adaptive interfaces that reduce cognitive load in high-stakes workflows using psychometric analysis and rule-based personalisation.',
-    tags: ['Research', 'HCI', 'JavaScript', 'UX'],
-  },
-  {
-    id: 6,
-    title: 'Resume Tailor',
-    description: 'Paste a job description, get a tailored LaTeX resume — ATS clean and optimised for the role. Built with LLM-based persona reframing. Browser extension in the roadmap.',
-    tags: ['LLM', 'LaTeX', 'Python', 'Developer Tools'],
-    status: 'inprogress',
-  },
-]
+import { projects } from '@/data/content'
 
 function ProjectCard({ project, index }) {
   const ref = useRef(null)

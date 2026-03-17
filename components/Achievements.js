@@ -2,54 +2,7 @@
 
 import { motion, useInView } from 'framer-motion'
 import { useRef } from 'react'
-
-const achievements = [
-  {
-    category: 'Research & Academic',
-    items: [
-      {
-        title: 'IEEE Published',
-        description: 'Adaptive UI/UX framework for geriatric users using psychometric analysis, speech-to-text, and rule-based personalization.',
-        year: '2023',
-        tag: 'Publication',
-      },
-      {
-        title: 'Best Capstone — PES University',
-        description: 'Awarded best project among 200 teams across the graduating batch.',
-        year: '2023',
-        tag: 'Award',
-      },
-    ],
-  },
-  {
-    category: 'Social Impact',
-    items: [
-      {
-        title: 'The Coder Factory',
-        description: 'Mentored underprivileged students in digital literacy and foundational programming. Teaching others became a core part of how I learn.',
-        year: '2021',
-        tag: 'Mentorship',
-      },
-      {
-        title: 'Samagic',
-        description: 'Organised and led design-thinking workshops focused on human-centered problem solving for real-world challenges.',
-        year: '2022',
-        tag: 'Community',
-      },
-    ],
-  },
-  {
-    category: 'Leadership & Events',
-    items: [
-      {
-        title: 'Event Organisation',
-        description: 'Carved out a consistent voice through organising technical and community events during and after college.',
-        year: '2021 — 2024',
-        tag: 'Leadership',
-      },
-    ],
-  },
-]
+import { achievements } from '@/data/content'
 
 const tagColors = {
   Publication: '#f59e0b',

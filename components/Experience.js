@@ -2,53 +2,7 @@
 
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import { useRef, useState } from 'react'
-
-const experiences = [
-  {
-    company: 'Dayforce',
-    role: 'Associate Software Engineer',
-    period: '2024 — Present',
-    location: 'Bengaluru, India',
-    description: 'Associate Software Engineer maintaining and scaling enterprise HR software at Dayforce, serving 6M+ employees across 600+ clients including Google, HPE, Deutsche Bank, and Oracle.',
-    highlights: [
-      'Spearheaded ESS go-live across multiple clients and almost 1M+ employees',
-      'Built an in-house captcha service and configurable password module',
-      'Resolved 16,000+ Veracode vulnerabilities, reinforcing platform security',
-      'Drove cloud modernisation and hardware migration across product and infra',
-      'Implemented CI/CD pipelines and migrated repositories to GitHub with AIDA',
-      'Mentored 40+ interns and new joinees across the organisation',
-    ],
-    stack: ['Java', 'REST APIs', 'CI/CD', 'Distributed Systems'],
-  },
-  {
-    company: 'QuantBlu',
-    role: 'Founding Engineer',
-    period: '2024',
-    location: 'Remote',
-    description: 'One of two engineers building a fintech product from scratch. Owned backend architecture, authentication systems, and API design end to end.',
-    highlights: [
-      'Designed secure authentication flows from scratch',
-      'Built scalable APIs under tight timelines',
-      'Made high-stakes architecture decisions in a 2-person team',
-      'Delivered under ambiguity with full ownership',
-    ],
-    stack: ['Python', 'PostgreSQL', 'REST APIs', 'System Design'],
-  },
-  {
-    company: 'TuteDude',
-    role: 'Web Development Instructor',
-    period: 'Nov 2023 — Feb 2024',
-    location: 'Remote',
-    description: 'Taught full-stack web development to students through an interactive online learning platform. Designed curriculum and delivered 55+ hours of original course content.',
-    highlights: [
-      'Taught MERN stack fundamentals to students across the platform',
-      'Created and delivered 55+ hours of original course content',
-      'Designed practical assignments and capstone projects',
-      'Mentored learners individually on debugging and version control',
-    ],
-    stack: ['MongoDB', 'Express', 'React', 'Node.js', 'JavaScript'],
-  },
-]
+import { experiences } from '@/data/content'
 
 function ExperienceCard({ exp, index, defaultOpen }) {
   const ref = useRef(null)

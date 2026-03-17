@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import TypingQuote from './Tagline'
+import { bio } from '@/data/content'
 
 export default function Hero() {
   return (
@@ -18,7 +19,7 @@ export default function Hero() {
               className="text-xs font-semibold uppercase tracking-widest"
               style={{ color: 'var(--color-accent)' }}
             >
-              Software Engineer · Bengaluru, India
+              {bio.role} . {bio.location}
             </motion.p>
 
             <motion.h1
@@ -28,7 +29,7 @@ export default function Hero() {
               className="text-5xl md:text-6xl font-extrabold tracking-tight leading-none"
               style={{ color: 'var(--color-text-primary)' }}
             >
-              Vishnu<br />Athreya
+              {bio.name}
             </motion.h1>
           </div>
           <TypingQuote />
