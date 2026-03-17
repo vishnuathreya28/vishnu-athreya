@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { bio, experiences, projects, education, publications } from '@/data/content'
 
 const PROMPT = 'vishnu@portfolio:~$'
 
@@ -11,56 +12,35 @@ const commands = {
   cat experience.txt  → work experience
   cat projects.txt    → projects
   cat education.txt   → education
-  cat skills.txt      → tech stack
+  cat publications    → research & publications
   open resume         → opens resume PDF
   contact             → get in touch
   clear               → clear terminal
   exit                → close terminal`,
 
-  whoami: `Vishnu Athreya
-Software Engineer · Bengaluru, India
-Systems thinker. People first.
-Currently at Dayforce — scaling enterprise HR software for 6M+ employees.`,
+  whoami: `${bio.name}
+${bio.role} · ${bio.location}
+${bio.tagline}`,
 
-  'cat experience.txt': `[1] Dayforce — Associate Software Engineer (2024 — Present)
-    Scaling enterprise HR software for 6M+ employees, 600+ clients.
-    Mentored 40+ interns across APAC.
+  'cat experience.txt': experiences.map((exp, i) =>
+    `[${i + 1}] ${exp.company} — ${exp.role} (${exp.period})\n    ${exp.description}`
+  ).join('\n\n'),
 
-[2] QuantBlu — Founding Engineer (2024)
-    Two-person team. Built auth systems and APIs from scratch.
+  'cat projects.txt': projects.map((p, i) =>
+    `[${p.id}] ${p.title}${p.status === 'inprogress' ? ' [In Progress]' : ''}\n    ${p.description}`
+  ).join('\n\n'),
 
-[3] TuteDude — Web Development Instructor (Nov 2023 — Feb 2024)
-    55+ hours of original course content. MERN stack.`,
+  'cat education.txt': education.map(edu =>
+    `${edu.institution} — ${edu.degree} (${edu.period})\n  ${edu.highlights.join('\n  ')}`
+  ).join('\n\n'),
 
-  'cat projects.txt': `[1] ESS AI Assistant
-    LLM-powered chatbot for enterprise HR navigation.
+  'cat publications': publications.map(pub =>
+    `${pub.title} — ${pub.journal} (${pub.year})\n  ${pub.description}\n  ${pub.link}`
+  ).join('\n\n'),
 
-[2] Market Data Pipeline
-    Time-series ingestion across NSE, BSE, Zerodha, Upstox.
-
-[3] Auth & Security Platform
-    Backend auth for 3M+ users, 1000+ enterprise deployments.
-
-[4] This Portfolio
-    Next.js, Tailwind v4, Framer Motion. Every line typed by hand.
-
-[5] Adaptive UI for Geriatric Users
-    IEEE published research. Best Capstone among 200 teams.`,
-
-  'cat education.txt': `PES University — B.Tech, Computer Science & Engineering (2020 — 2024)
-  IEEE published · Best Capstone · Design thinking · Mentorship
-
-Graduate School — Masters (2026 —)
-  Details coming soon.`,
-
-  'cat skills.txt': `Languages     Python · Java · JavaScript · SQL
-Backend       REST APIs · Node.js · Express · Distributed Systems
-Data          PostgreSQL · MongoDB · Time-Series · pandas
-Tools         Git · Docker · Figma · Postman · CI/CD`,
-
-  contact: `Email     vishnu.athreya77@gmail.com
-LinkedIn  linkedin.com/in/vish28
-GitHub    github.com/vishnuathreya28`,
+  contact: `Email     ${bio.email}
+LinkedIn  ${bio.linkedin}
+GitHub    ${bio.github}`,
 }
 
 export default function CLI() {
