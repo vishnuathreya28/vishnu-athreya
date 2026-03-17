@@ -15,6 +15,7 @@ const projects = [
     title: 'Market Data Pipeline',
     description: 'Ingestion and normalisation of time-series market data across NSE, BSE, Zerodha and Upstox. Built to handle latency, missing data, and schema inconsistencies across sources.',
     tags: ['Python', 'PostgreSQL', 'Time-Series', 'Data Engineering'],
+    status: 'inprogress',
   },
   {
     id: 3,
@@ -34,6 +35,13 @@ const projects = [
     description: 'IEEE published research on adaptive interfaces that reduce cognitive load in high-stakes workflows using psychometric analysis and rule-based personalisation.',
     tags: ['Research', 'HCI', 'JavaScript', 'UX'],
   },
+  {
+    id: 6,
+    title: 'Resume Tailor',
+    description: 'Paste a job description, get a tailored LaTeX resume — ATS clean and optimised for the role. Built with LLM-based persona reframing. Browser extension in the roadmap.',
+    tags: ['LLM', 'LaTeX', 'Python', 'Developer Tools'],
+    status: 'inprogress',
+  },
 ]
 
 function ProjectCard({ project, index }) {
@@ -52,7 +60,17 @@ function ProjectCard({ project, index }) {
       <h3 className="text-base font-bold" style={{ color: 'var(--color-text-primary)' }}>
         {project.title}
       </h3>
-
+      {project.status === 'inprogress' && (
+        <span
+          className="text-xs px-2 py-0.5 rounded-full font-medium"
+          style={{
+            backgroundColor: 'rgba(245,158,11,0.1)',
+            color: '#f59e0b',
+          }}
+        >
+          In Progress
+        </span>
+      )}
       <p className="text-sm leading-relaxed" style={{ color: 'var(--color-text-secondary)' }}>
         {project.description}
       </p>

@@ -63,7 +63,6 @@ function ExperienceCard({ exp, index, defaultOpen }) {
       transition={{ duration: 0.5, delay: index * 0.1 }}
       onClick={() => setIsOpen(!isOpen)}
       className="flex flex-col gap-4 pl-6 py-4 cursor-pointer"
-      style={{ borderLeft: '2px solid var(--color-accent)' }}
     >
       {/* Header — always visible */}
       <div className="flex items-start justify-between">

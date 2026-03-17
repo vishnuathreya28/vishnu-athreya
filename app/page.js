@@ -11,8 +11,9 @@ import Projects from '@/components/Projects'
 import Publications from '@/components/Publications'
 import Resume from '@/components/Resume'
 import Contact from '@/components/Contact'
+import CLI from '@/components/CLI'
 
-const navItems = ['About', 'Experience', 'Education', 'Achievements', 'Projects', 'Publications', 'Resume']
+const navItems = ['About', 'Experience', 'Projects', 'Achievements', 'Publications', 'Education', 'Resume']
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -118,14 +119,14 @@ export default function Home() {
         <section id="about" style={{ scrollMarginTop: '120px' }} className="md:scroll-mt-24"><Hero /></section>
         <section id="timeline" style={{ scrollMarginTop: '120px' }} className="md:scroll-mt-24"><Timeline /></section>
         <section id="experience" style={{ scrollMarginTop: '120px' }} className="md:scroll-mt-24"><Experience /></section>
-        <section id="education" style={{ scrollMarginTop: '120px' }} className="md:scroll-mt-24"><Education /></section>
-        <section id="achievements" style={{ scrollMarginTop: '120px' }} className="md:scroll-mt-24"><Achievements /></section>
         <section id="projects" style={{ scrollMarginTop: '120px' }} className="md:scroll-mt-24"><Projects /></section>
+        <section id="achievements" style={{ scrollMarginTop: '120px' }} className="md:scroll-mt-24"><Achievements /></section>
         <section id="publications" style={{ scrollMarginTop: '120px' }} className="md:scroll-mt-24"><Publications /></section>
+        <section id="education" style={{ scrollMarginTop: '120px' }} className="md:scroll-mt-24"><Education /></section>
         <section id="resume" style={{ scrollMarginTop: '120px' }} className="md:scroll-mt-24"><Resume /></section>
         <section id="contact" style={{ scrollMarginTop: '120px' }} className="md:scroll-mt-24"><Contact /></section>
       </div>
-
+      <CLI />
     </main>
   )
 }

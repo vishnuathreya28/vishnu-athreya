@@ -24,8 +24,8 @@ export default function Resume() {
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: 0.1 }}
-        className="flex items-center justify-between pl-6 py-5"
-        style={{ borderLeft: '2px solid var(--color-accent)' }}
+        className="flex items-center justify-between pl-6 py-5 rounded-2xl"
+        style={{ border: '1px solid var(--color-border)' }}
       >
         <div className="flex flex-col gap-1">
           <h3 className="text-base font-bold" style={{ color: 'var(--color-text-primary)' }}>
