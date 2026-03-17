@@ -32,14 +32,16 @@ export default function Publications() {
             style={{ border: '1px solid var(--color-border)' }}
           >
             {/* Header */}
-            <div className="flex items-start justify-between gap-6">
-              <h3
-                className="text-base font-bold leading-snug"
-                style={{ color: 'var(--color-text-primary)' }}
-              >
-                {pub.title}
-              </h3>
-              <div className="flex flex-col items-end gap-1 flex-shrink-0">
+            <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1">
+                <h3
+                  className="text-base font-bold leading-snug"
+                  style={{ color: 'var(--color-text-primary)' }}
+                >
+                  {pub.title}
+                </h3>
+              </div>
+              <div className="flex items-center gap-2">
                 <span
                   className="text-xs font-bold px-2 py-1 rounded-full"
                   style={{
@@ -61,7 +63,7 @@ export default function Publications() {
             </p>
 
             {/* Footer */}
-            <div className="flex items-center justify-between pt-2">
+            <div className="flex flex-col gap-3 pt-2">
               <div className="flex flex-wrap gap-2">
                 {pub.tags.map((tag) => (
                   <span
@@ -80,7 +82,7 @@ export default function Publications() {
                 href={pub.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm font-medium transition-colors duration-200 flex-shrink-0 ml-4"
+                className="text-sm font-medium transition-colors duration-200 self-start"
                 style={{ color: 'var(--color-accent)' }}
                 onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text-primary)'}
                 onMouseLeave={e => e.currentTarget.style.color = 'var(--color-accent)'}

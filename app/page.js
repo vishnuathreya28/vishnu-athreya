@@ -115,7 +115,7 @@ export default function Home() {
       </nav>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-4xl px-6 md:px-8 flex flex-col gap-12 pt-24 pb-28">
+      <div className="relative z-10 w-full max-w-4xl px-6 md:px-8 flex flex-col gap-16 pt-12 md:pt-16 pb-28">
         <section id="about" style={{ scrollMarginTop: '120px' }} className="md:scroll-mt-24"><Hero /></section>
         <section id="timeline" style={{ scrollMarginTop: '120px' }} className="md:scroll-mt-24"><Timeline /></section>
         <section id="experience" style={{ scrollMarginTop: '120px' }} className="md:scroll-mt-24"><Experience /></section>

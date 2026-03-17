@@ -19,7 +19,7 @@ function ExperienceCard({ exp, index, defaultOpen }) {
       className="flex flex-col gap-4 pl-6 py-4 cursor-pointer"
     >
       {/* Header — always visible */}
-      <div className="flex items-start justify-between">
+      <div className="flex flex-col gap-2">
         <div className="flex flex-col gap-1">
           <h3 className="text-lg font-bold" style={{ color: 'var(--color-text-primary)' }}>
             {exp.role}
@@ -28,10 +28,13 @@ function ExperienceCard({ exp, index, defaultOpen }) {
             {exp.company}
           </span>
         </div>
-        <div className="flex flex-col items-end gap-1">
-          <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>{exp.period}</span>
-          <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>{exp.location}</span>
-          <span className="text-sm mt-1" style={{ color: 'var(--color-accent)' }}>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>{exp.period}</span>
+            <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>·</span>
+            <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>{exp.location}</span>
+          </div>
+          <span className="text-sm" style={{ color: 'var(--color-accent)' }}>
             {isOpen ? '−' : '+'}
           </span>
         </div>

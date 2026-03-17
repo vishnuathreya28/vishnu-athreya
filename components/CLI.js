@@ -26,7 +26,7 @@ ${bio.tagline}`,
     `[${i + 1}] ${exp.company} — ${exp.role} (${exp.period})\n    ${exp.description}`
   ).join('\n\n'),
 
-  'cat projects.txt': projects.map((p, i) =>
+  'cat projects.txt': projects.map((p) =>
     `[${p.id}] ${p.title}${p.status === 'inprogress' ? ' [In Progress]' : ''}\n    ${p.description}`
   ).join('\n\n'),
 
@@ -51,10 +51,23 @@ export default function CLI() {
   ])
   const [cmdHistory, setCmdHistory] = useState([])
   const [cmdIndex, setCmdIndex] = useState(-1)
+  const [showSpotlight, setShowSpotlight] = useState(false)
   const inputRef = useRef(null)
   const bottomRef = useRef(null)
 
-  // Open on '/' keypress
+  useEffect(() => {
+    const seen = localStorage.getItem('cli-spotlight-seen')
+    if (!seen) {
+      const timer = setTimeout(() => setShowSpotlight(true), 2000)
+      return () => clearTimeout(timer)
+    }
+  }, [])
+
+  const dismissSpotlight = () => {
+    setShowSpotlight(false)
+    localStorage.setItem('cli-spotlight-seen', 'true')
+  }
+
   useEffect(() => {
     const handleKey = (e) => {
       if (e.key === '/' && !open && e.target.tagName !== 'INPUT') {
@@ -69,14 +82,12 @@ export default function CLI() {
     return () => window.removeEventListener('keydown', handleKey)
   }, [open])
 
-  // Focus input when opened
   useEffect(() => {
     if (open) {
       setTimeout(() => inputRef.current?.focus(), 100)
     }
   }, [open])
 
-  // Scroll to bottom on new output
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [history])
@@ -121,13 +132,11 @@ export default function CLI() {
     if (e.key === 'Enter') {
       handleCommand(input)
     }
-    // Arrow up — previous command
     if (e.key === 'ArrowUp') {
       const next = Math.min(cmdIndex + 1, cmdHistory.length - 1)
       setCmdIndex(next)
       setInput(cmdHistory[next] || '')
     }
-    // Arrow down — next command
     if (e.key === 'ArrowDown') {
       const next = Math.max(cmdIndex - 1, -1)
       setCmdIndex(next)
@@ -137,23 +146,100 @@ export default function CLI() {
 
   return (
     <>
-      {/* Hint */}
+      {/* Spotlight overlay */}
       <AnimatePresence>
-        {!open && (
+        {showSpotlight && !open && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ delay: 2, duration: 0.6 }}
-            className="fixed bottom-6 right-6 z-40 text-xs px-3 py-1.5 rounded-full"
-            style={{
-              backgroundColor: 'rgba(26,26,26,0.06)',
-              color: '#999',
-              fontFamily: 'monospace',
-            }}
+            transition={{ duration: 0.4 }}
+            onClick={dismissSpotlight}
+            className="fixed inset-0 z-40"
+            style={{ backgroundColor: 'rgba(0,0,0,0.6)' }}
           >
-            press / to open terminal
+            <div
+              className="fixed bottom-24 right-4 flex flex-col items-end gap-2"
+              style={{ pointerEvents: 'none' }}
+            >
+              <div
+                className="px-4 py-2 rounded-xl text-sm"
+                style={{
+                  backgroundColor: '#f59e0b',
+                  color: '#1a1a1a',
+                  fontFamily: 'monospace',
+                  fontWeight: 600,
+                }}
+              >
+                click to explore a different side
+              </div>
+              <div className="flex justify-end pr-4">
+                <svg width="24" height="32" viewBox="0 0 24 32" fill="none">
+                  <path
+                    d="M12 0 L12 28 M5 20 L12 30 L19 20"
+                    stroke="#f59e0b"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </div>
+            </div>
           </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* CLI button */}
+      <AnimatePresence>
+        {!open && (
+          <>
+            {/* Mobile */}
+            <motion.button
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ delay: 2, duration: 0.4 }}
+              onClick={() => {
+                dismissSpotlight()
+                setOpen(true)
+              }}
+              className="md:hidden fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 rounded-2xl"
+              style={{
+                backgroundColor: '#1a1a1a',
+                color: '#f59e0b',
+                fontFamily: 'monospace',
+                fontSize: '13px',
+                boxShadow: '0 4px 24px rgba(0,0,0,0.2)',
+              }}
+            >
+              <span>&gt;_</span>
+              <span style={{ color: '#999', fontSize: '11px' }}>tap to explore</span>
+            </motion.button>
+
+            {/* Desktop */}
+            <motion.button
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ delay: 2, duration: 0.4 }}
+              onClick={() => {
+                dismissSpotlight()
+                setOpen(true)
+              }}
+              className="hidden md:flex fixed bottom-6 right-6 z-50 items-center gap-2 px-4 py-3 rounded-2xl"
+              style={{
+                backgroundColor: '#1a1a1a',
+                color: '#f59e0b',
+                fontFamily: 'monospace',
+                fontSize: '13px',
+                boxShadow: '0 4px 24px rgba(0,0,0,0.2)',
+                animation: 'subtlePulse 2s ease-in-out infinite',
+              }}
+            >
+              <span>&gt;_</span>
+              <span style={{ color: '#999', fontSize: '11px' }}>press / or click</span>
+            </motion.button>
+          </>
         )}
       </AnimatePresence>
 
@@ -165,8 +251,7 @@ export default function CLI() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: '100%', opacity: 0 }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="fixed bottom-0 left-0 right-0 z-50 mx-auto"
-            style={{ maxWidth: '768px', left: '50%', transform: 'translateX(-50%)' }}
+            className="fixed bottom-0 left-0 right-0 z-50"
           >
             <div
               className="rounded-t-2xl overflow-hidden"
@@ -178,7 +263,7 @@ export default function CLI() {
                 boxShadow: '0 -8px 40px rgba(0,0,0,0.2)',
               }}
             >
-              {/* Terminal title bar */}
+              {/* Title bar */}
               <div
                 className="flex items-center justify-between px-4 py-3 flex-shrink-0"
                 style={{ borderBottom: '1px solid rgba(255,255,255,0.06)' }}

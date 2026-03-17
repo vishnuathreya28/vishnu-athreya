@@ -22,24 +22,26 @@ function EducationCard({ edu, index }) {
       }}
     >
       {/* Header */}
-      <div className="flex items-start justify-between">
-        <div className="flex flex-col gap-1">
-          <h3
-            className="text-lg font-bold"
-            style={{ color: edu.placeholder ? '#bbb' : 'var(--color-text-primary)' }}
-          >
-            {edu.degree}
-          </h3>
-          <span className="text-sm font-semibold" style={{ color: edu.placeholder ? '#bbb' : 'var(--color-text-primary)' }}>
-            {edu.institution}
-          </span>
+      <div className="flex flex-col gap-2">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex flex-col gap-1">
+            <h3
+              className="text-lg font-bold"
+              style={{ color: edu.placeholder ? '#bbb' : 'var(--color-text-primary)' }}
+            >
+              {edu.degree}
+            </h3>
+            <span className="text-sm font-semibold" style={{ color: 'var(--color-accent)' }}>
+              {edu.institution}
+            </span>
+          </div>
         </div>
-        <div className="flex flex-col items-end gap-1">
+        <div className="flex items-center gap-3">
           <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>{edu.period}</span>
+          <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>·</span>
           <span className="text-xs" style={{ color: 'var(--color-text-muted)' }}>{edu.location}</span>
         </div>
       </div>
-
       {/* Highlights */}
       <ul className="flex flex-col gap-2">
         {edu.highlights.map((point) => (

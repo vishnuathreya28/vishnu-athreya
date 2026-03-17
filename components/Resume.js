@@ -36,29 +36,29 @@ export default function Resume() {
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
-          <a
-            href="/resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200"
-            style={{ color: 'var(--color-accent)' }}
-            onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text-primary)'}
-            onMouseLeave={e => e.currentTarget.style.color = 'var(--color-accent)'}
-          >
-            View PDF →
-          </a>
-          <a
-            href="/resume.pdf"
-            download
-            className="px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200"
-            style={{ color: 'var(--color-accent)' }}
-            onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text-primary)'}
-            onMouseLeave={e => e.currentTarget.style.color = 'var(--color-accent)'}
-          >
-            Download
-          </a>
-        </div>
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-3">
+        <a
+          href="/resume.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200"
+          style={{ color: 'var(--color-accent)' }}
+          onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text-primary)'}
+          onMouseLeave={e => e.currentTarget.style.color = 'var(--color-accent)'}
+        >
+          View PDF →
+        </a>
+        <a
+          href="/resume.pdf"
+          download
+          className="px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200"
+          style={{ color: 'var(--color-accent)' }}
+          onMouseEnter={e => e.currentTarget.style.color = 'var(--color-text-primary)'}
+          onMouseLeave={e => e.currentTarget.style.color = 'var(--color-accent)'}
+        >
+          Download
+        </a>
+      </div>
       </motion.div>
     </section>
   )
