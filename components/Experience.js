@@ -1,7 +1,7 @@
 'use client'
 
-import { motion, useInView } from 'framer-motion'
-import { useRef } from 'react'
+import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { useRef, useState } from 'react'
 
 const experiences = [
   {
@@ -35,24 +35,25 @@ const experiences = [
     stack: ['Python', 'PostgreSQL', 'REST APIs', 'System Design'],
   },
   {
-  company: 'TuteDude',
-  role: 'Web Development Instructor',
-  period: 'Nov 2023 — Feb 2024',
-  location: 'Remote',
-  description: 'Taught full-stack web development to students through an interactive online learning platform. Designed curriculum and delivered 55+ hours of original course content.',
-  highlights: [
-    'Taught MERN stack fundamentals to students across the platform',
-    'Created and delivered 55+ hours of original course content',
-    'Designed practical assignments and capstone projects',
-    'Mentored learners individually on debugging and version control',
-  ],
+    company: 'TuteDude',
+    role: 'Web Development Instructor',
+    period: 'Nov 2023 — Feb 2024',
+    location: 'Remote',
+    description: 'Taught full-stack web development to students through an interactive online learning platform. Designed curriculum and delivered 55+ hours of original course content.',
+    highlights: [
+      'Taught MERN stack fundamentals to students across the platform',
+      'Created and delivered 55+ hours of original course content',
+      'Designed practical assignments and capstone projects',
+      'Mentored learners individually on debugging and version control',
+    ],
     stack: ['MongoDB', 'Express', 'React', 'Node.js', 'JavaScript'],
   },
 ]
 
-function ExperienceCard({ exp, index }) {
+function ExperienceCard({ exp, index, defaultOpen }) {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-80px' })
+  const [isOpen, setIsOpen] = useState(defaultOpen)
 
   return (
     <motion.div
@@ -60,9 +61,10 @@ function ExperienceCard({ exp, index }) {
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="flex flex-col gap-4 pl-6 py-2"
+      onClick={() => setIsOpen(!isOpen)}
+      className="flex flex-col gap-4 pl-6 py-4 cursor-pointer"
     >
-      {/* Header */}
+      {/* Header — always visible */}
       <div className="flex items-start justify-between">
         <div className="flex flex-col gap-1">
           <h3 className="text-lg font-bold" style={{ color: '#1a1a1a' }}>
@@ -75,26 +77,14 @@ function ExperienceCard({ exp, index }) {
         <div className="flex flex-col items-end gap-1">
           <span className="text-xs" style={{ color: '#aaa' }}>{exp.period}</span>
           <span className="text-xs" style={{ color: '#aaa' }}>{exp.location}</span>
+          <span className="text-sm mt-1" style={{ color: '#94a3b8' }}>
+            {isOpen ? '−' : '+'}
+          </span>
         </div>
       </div>
 
-      {/* Description */}
-      <p className="text-sm leading-relaxed" style={{ color: '#666' }}>
-        {exp.description}
-      </p>
-
-      {/* Highlights */}
-      <ul className="flex flex-col gap-2">
-        {exp.highlights.map((point) => (
-          <li key={point} className="flex items-start gap-2 text-sm" style={{ color: '#666' }}>
-            <span style={{ color: '#94a3b8', marginTop: '2px' }}>→</span>
-            {point}
-          </li>
-        ))}
-      </ul>
-
-      {/* Stack */}
-      <div className="flex flex-wrap gap-2 pt-2">
+      {/* Stack — always visible */}
+      <div className="flex flex-wrap gap-2">
         {exp.stack.map((tech) => (
           <span
             key={tech}
@@ -108,6 +98,32 @@ function ExperienceCard({ exp, index }) {
           </span>
         ))}
       </div>
+
+      {/* Expandable content */}
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            key="content"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="flex flex-col gap-4 overflow-hidden"
+          >
+            <p className="text-sm leading-relaxed" style={{ color: '#666' }}>
+              {exp.description}
+            </p>
+            <ul className="flex flex-col gap-2">
+              {exp.highlights.map((point) => (
+                <li key={point} className="flex items-start gap-2 text-sm" style={{ color: '#666' }}>
+                  <span style={{ color: '#94a3b8', marginTop: '2px' }}>→</span>
+                  {point}
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.div>
   )
 }
@@ -131,7 +147,12 @@ export default function Experience() {
 
       <div className="flex flex-col gap-6">
         {experiences.map((exp, index) => (
-          <ExperienceCard key={exp.company} exp={exp} index={index} />
+          <ExperienceCard
+            key={exp.company}
+            exp={exp}
+            index={index}
+            defaultOpen={index === 0}
+          />
         ))}
       </div>
     </section>

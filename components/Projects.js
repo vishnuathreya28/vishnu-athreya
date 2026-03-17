@@ -6,24 +6,33 @@ import { useRef } from 'react'
 const projects = [
   {
     id: 1,
-    title: 'Market Data Pipeline',
-    description: 'Ingestion and normalization of time-series data across NSE, BSE, Zerodha and Upstox. Handles latency, missing data, and schema inconsistencies.',
-    tags: ['Python', 'PostgreSQL', 'Time-Series', 'Data Engineering'],
-    github: '#',
+    title: 'ESS AI Assistant',
+    description: 'LLM-powered chatbot built as a prototype for enterprise HR software. Lets employees interact with the application in plain language — navigate to screens, generate payslips, update details — without touching the UI directly.',
+    tags: ['LLM', 'AI', 'Python', 'Enterprise Software'],
   },
   {
     id: 2,
-    title: 'Auth & Security Platform',
-    description: 'Backend authentication system serving 3M+ active users across 1,000+ enterprise deployments. Focused on reliability and failure rate reduction.',
-    tags: ['Java', 'REST APIs', 'Distributed Systems', 'CI/CD'],
-    github: '#',
+    title: 'Market Data Pipeline',
+    description: 'Ingestion and normalisation of time-series market data across NSE, BSE, Zerodha and Upstox. Built to handle latency, missing data, and schema inconsistencies across sources.',
+    tags: ['Python', 'PostgreSQL', 'Time-Series', 'Data Engineering'],
   },
   {
     id: 3,
+    title: 'Auth & Security Platform',
+    description: 'Backend authentication system serving 3M+ active users across 1,000+ enterprise deployments. Focused on reliability, failure rate reduction, and security hardening.',
+    tags: ['Java', 'REST APIs', 'Distributed Systems', 'CI/CD'],
+  },
+  {
+    id: 4,
+    title: 'This Portfolio',
+    description: 'Designed and built from scratch. Next.js app router, Tailwind v4, Framer Motion animations, deployed on Vercel. Every line typed by hand.',
+    tags: ['Next.js', 'Tailwind v4', 'Framer Motion', 'Vercel'],
+  },
+  {
+    id: 5,
     title: 'Adaptive UI for Geriatric Users',
-    description: 'IEEE published research. Adaptive interface reducing cognitive load in high-stakes workflows using psychometric analysis and rule-based personalization.',
-    tags: ['Research', 'HCI', 'JavaScript', 'UX'],
-    github: '#',
+    description: 'IEEE published research on adaptive interfaces that reduce cognitive load in high-stakes workflows using psychometric analysis and rule-based personalisation.',
+    tags: ['Research', 'HCI', 'JavaScript', 'UX']
   },
 ]
 
@@ -38,6 +47,7 @@ function ProjectCard({ project, index }) {
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       className="flex flex-col gap-4 p-6 rounded-2xl"
+      style={{ border: '1px solid rgba(26,26,26,0.08)' }}
     >
       <h3 className="text-base font-bold" style={{ color: '#1a1a1a' }}>
         {project.title}
@@ -62,17 +72,19 @@ function ProjectCard({ project, index }) {
             </span>
           ))}
         </div>
-        <a
-          href={project.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm font-medium flex-shrink-0 ml-4 transition-colors duration-200"
-          style={{ color: '#94a3b8' }}
-          onMouseEnter={e => e.currentTarget.style.color = '#1a1a1a'}
-          onMouseLeave={e => e.currentTarget.style.color = '#94a3b8'}
-        >
-          GitHub →
-        </a>
+        {project.publication && (
+          <a
+            href={project.publication}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium flex-shrink-0 ml-4 transition-colors duration-200"
+            style={{ color: '#94a3b8' }}
+            onMouseEnter={e => e.currentTarget.style.color = '#1a1a1a'}
+            onMouseLeave={e => e.currentTarget.style.color = '#94a3b8'}
+          >
+            IEEE →
+          </a>
+        )}
       </div>
     </motion.div>
   )

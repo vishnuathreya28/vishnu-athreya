@@ -8,7 +8,7 @@ export default function Hero() {
   return (
     <section className="w-full flex flex-col gap-16">
 
-      <div className="flex flex-row items-center justify-between gap-16">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-16">
 
         {/* Left */}
         <div className="flex flex-col gap-8 flex-1">
@@ -22,12 +22,12 @@ export default function Hero() {
             >
               Software Engineer · Bengaluru, India
             </motion.p>
-            
+
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: 0.1 }}
-              className="text-6xl font-extrabold tracking-tight leading-none"
+              className="text-5xl md:text-6xl font-extrabold tracking-tight leading-none"
               style={{ color: '#1a1a1a' }}
             >
               Vishnu<br />Athreya
@@ -48,7 +48,7 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="w-64 h-80 rounded-3xl flex-shrink-0 overflow-hidden"
+          className="w-48 h-60 md:w-64 md:h-80 rounded-3xl flex-shrink-0 overflow-hidden mx-auto md:mx-0"
         >
           <img
             src="/photo.jpeg"
